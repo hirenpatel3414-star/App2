@@ -2,9 +2,9 @@ name: Android CI
 
 on:
   push:
-    branches: [ "fix/github-action-build" ]
+    branches: [ "main" ]
   pull_request:
-    branches: [ "fix/github-action-build" ]
+    branches: [ "main" ]
 
 jobs:
   build:
@@ -13,17 +13,11 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - name: set up JDK 17
-      uses: actions/setup-java@v3
-      with:
-        java-version: '17'
-        distribution: 'temurin'
-        cache: 'gradle'
 
-    - name: Grant execute permission for gradlew
-      run: chmod +x gradlew
     - name: Build with Gradle
-      run: ./gradlew build
+      uses: gradle/gradle-build-action@v2
+      with:
+        arguments: build
 
     - name: Upload APK
       uses: actions/upload-artifact@v4
