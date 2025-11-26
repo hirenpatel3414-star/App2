@@ -2,9 +2,9 @@ name: Android CI
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "feat/initial-project-structure" ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "feat/initial-project-structure" ]
 
 jobs:
   build:
